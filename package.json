@@ -1,0 +1,23 @@
+{
+  "name": "hotels-com-clone",
+  "version": "1.0.0",
+  "description": "Functional Hotels.com Clone",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "hotel",
+    "booking",
+    "web-development"
+  ],
+  "author": "Ashlin Naeem",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  }
+}

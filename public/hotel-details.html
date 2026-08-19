@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Hotel Details - Hotels.com Clone</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/hotels.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Hotels<span>.com</span>
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="hotels.html">
+                Hotels
+            </a>
+
+            <a href="#">
+                Deals
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+        </nav>
+
+
+        <button class="login-btn">
+            Sign In
+        </button>
+
+    </header>
+
+
+
+    <!-- BACK BUTTON -->
+
+    <div class="details-container">
+
+        <button
+            class="back-button"
+            onclick="history.back()"
+        >
+            ← Back to Hotels
+        </button>
+
+
+        <!-- HOTEL DETAILS -->
+
+        <div
+            id="hotelDetails"
+            class="hotel-details"
+        >
+
+            <div class="loading">
+                Loading hotel details...
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Hotels.com Clone.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/hotel-details.js"></script>
+
+</body>
+
+</html>

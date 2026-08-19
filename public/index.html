@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels.com Clone</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+            Hotels<span>.com</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="hotels.html">Hotels</a>
+            <a href="#">Deals</a>
+            <a href="#">About</a>
+        </nav>
+
+        <button class="login-btn">
+            Sign In
+        </button>
+
+    </header>
+
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Find your perfect stay</h1>
+
+            <p>
+                Search hotels, compare prices and book your next trip.
+            </p>
+
+            <form class="search-box" id="searchForm">
+
+                <div class="search-field">
+
+                    <label>Where</label>
+
+                    <input
+                        type="text"
+                        id="destination"
+                        placeholder="Where are you going?"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="search-field">
+
+                    <label>Check-in</label>
+
+                    <input
+                        type="date"
+                        id="checkIn"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="search-field">
+
+                    <label>Check-out</label>
+
+                    <input
+                        type="date"
+                        id="checkOut"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="search-field">
+
+                    <label>Guests</label>
+
+                    <select id="guests">
+
+                        <option value="1">1 Guest</option>
+                        <option value="2" selected>2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5 Guests</option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="search-btn"
+                >
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <section class="featured">
+
+        <div class="section-title">
+
+            <h2>Featured stays</h2>
+
+            <p>
+                Discover some of our popular hotels.
+            </p>
+
+        </div>
+
+
+        <div class="hotel-grid">
+
+            <div class="hotel-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+                    alt="Luxury hotel"
+                >
+
+                <div class="hotel-info">
+
+                    <h3>Grand Luxury Hotel</h3>
+
+                    <p class="location">
+                        Lahore, Pakistan
+                    </p>
+
+                    <div class="rating">
+                        ⭐ 4.8
+                    </div>
+
+                    <p class="price">
+                        $120 <span>/ night</span>
+                    </p>
+
+                    <button
+                        class="view-btn"
+                        onclick="viewHotel(1)"
+                    >
+                        View Hotel
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="hotel-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80"
+                    alt="Modern hotel"
+                >
+
+                <div class="hotel-info">
+
+                    <h3>Royal Palace Hotel</h3>
+
+                    <p class="location">
+                        Islamabad, Pakistan
+                    </p>
+
+                    <div class="rating">
+                        ⭐ 4.7
+                    </div>
+
+                    <p class="price">
+                        $95 <span>/ night</span>
+                    </p>
+
+                    <button
+                        class="view-btn"
+                        onclick="viewHotel(2)"
+                    >
+                        View Hotel
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="hotel-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=80"
+                    alt="Hotel room"
+                >
+
+                <div class="hotel-info">
+
+                    <h3>City View Resort</h3>
+
+                    <p class="location">
+                        Karachi, Pakistan
+                    </p>
+
+                    <div class="rating">
+                        ⭐ 4.6
+                    </div>
+
+                    <p class="price">
+                        $85 <span>/ night</span>
+                    </p>
+
+                    <button
+                        class="view-btn"
+                        onclick="viewHotel(3)"
+                    >
+                        View Hotel
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 Hotels.com Clone. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Hotels - Hotels.com Clone</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/hotels.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================= -->
+    <!-- NAVBAR -->
+    <!-- ============================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Hotels<span>.com</span>
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="hotels.html">
+                Hotels
+            </a>
+
+            <a href="#">
+                Deals
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+        </nav>
+
+
+        <button class="login-btn">
+            Sign In
+        </button>
+
+    </header>
+
+
+
+    <!-- ============================= -->
+    <!-- PAGE HEADER -->
+    <!-- ============================= -->
+
+    <section class="listing-header">
+
+        <div>
+
+            <h1>
+                Find your perfect stay
+            </h1>
+
+            <p id="searchSummary">
+                Browse our available hotels
+            </p>
+
+        </div>
+
+
+        <button
+            class="back-home"
+            onclick="window.location.href='index.html'"
+        >
+            New Search
+        </button>
+
+    </section>
+
+
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
+
+    <main class="listing-container">
+
+
+        <!-- ========================= -->
+        <!-- FILTER SIDEBAR -->
+        <!-- ========================= -->
+
+        <aside class="filters">
+
+
+            <h2>
+                Filters
+            </h2>
+
+
+            <!-- PRICE -->
+
+            <div class="filter-group">
+
+                <h3>
+                    Maximum Price
+                </h3>
+
+
+                <input
+                    type="range"
+                    id="priceFilter"
+                    min="50"
+                    max="200"
+                    value="200"
+                    step="5"
+                >
+
+
+                <div class="range-value">
+
+                    Up to $
+
+                    <span id="priceValue">
+                        200
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RATING -->
+
+            <div class="filter-group">
+
+                <h3>
+                    Minimum Rating
+                </h3>
+
+
+                <select id="ratingFilter">
+
+                    <option value="0">
+                        Any Rating
+                    </option>
+
+                    <option value="4">
+                        4+ ⭐
+                    </option>
+
+                    <option value="4.5">
+                        4.5+ ⭐
+                    </option>
+
+                    <option value="4.7">
+                        4.7+ ⭐
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- HOTEL TYPE -->
+
+            <div class="filter-group">
+
+                <h3>
+                    Hotel Type
+                </h3>
+
+
+                <select id="typeFilter">
+
+                    <option value="all">
+                        All Types
+                    </option>
+
+                    <option value="Hotel">
+                        Hotel
+                    </option>
+
+                    <option value="Luxury Hotel">
+                        Luxury Hotel
+                    </option>
+
+                    <option value="Resort">
+                        Resort
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- RESET -->
+
+            <button
+                id="resetFilters"
+                class="reset-btn"
+            >
+                Reset Filters
+            </button>
+
+        </aside>
+
+
+
+        <!-- ========================= -->
+        <!-- HOTEL RESULTS -->
+        <!-- ========================= -->
+
+        <section class="results">
+
+
+            <div class="results-top">
+
+                <h2>
+                    Available Hotels
+                </h2>
+
+
+                <select id="sortSelect">
+
+                    <option value="rating">
+                        Best Rated
+                    </option>
+
+                    <option value="price-low">
+                        Price: Low to High
+                    </option>
+
+                    <option value="price-high">
+                        Price: High to Low
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="hotelList"
+                class="hotel-list"
+            >
+                <!-- Hotels will be inserted by JavaScript -->
+            </div>
+
+
+            <div
+                id="noResults"
+                class="no-results"
+            >
+
+                <h2>
+                    No hotels found
+                </h2>
+
+                <p>
+                    Try changing your filters or destination.
+                </p>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Hotels.com Clone.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/hotels.js"></script>
+
+</body>
+
+</html>

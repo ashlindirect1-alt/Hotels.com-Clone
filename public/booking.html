@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Book Hotel - Hotels.com Clone</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/booking.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Hotels<span>.com</span>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="hotels.html">
+                Hotels
+            </a>
+
+            <a href="#">
+                Deals
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+        </nav>
+
+        <button class="login-btn">
+            Sign In
+        </button>
+
+    </header>
+
+
+    <!-- PAGE -->
+
+    <main class="booking-container">
+
+        <h1>
+            Complete Your Booking
+        </h1>
+
+        <p class="booking-subtitle">
+            Enter your details to reserve your room.
+        </p>
+
+
+        <!-- HOTEL SUMMARY -->
+
+        <div
+            id="hotelSummary"
+            class="hotel-summary"
+        >
+
+            Loading hotel information...
+
+        </div>
+
+
+        <!-- BOOKING FORM -->
+
+        <form
+            id="bookingForm"
+            class="booking-form"
+        >
+
+            <h2>
+                Guest Information
+            </h2>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="guestName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="guestName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="checkIn">
+                        Check-in
+                    </label>
+
+                    <input
+                        type="date"
+                        id="checkIn"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="checkOut">
+                        Check-out
+                    </label>
+
+                    <input
+                        type="date"
+                        id="checkOut"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="guests">
+                    Number of Guests
+                </label>
+
+                <select
+                    id="guests"
+                    required
+                >
+
+                    <option value="1">
+                        1 Guest
+                    </option>
+
+                    <option value="2" selected>
+                        2 Guests
+                    </option>
+
+                    <option value="3">
+                        3 Guests
+                    </option>
+
+                    <option value="4">
+                        4 Guests
+                    </option>
+
+                    <option value="5">
+                        5 Guests
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div
+                id="priceSummary"
+                class="price-summary"
+            >
+
+                <div>
+
+                    <span>
+                        Price per night
+                    </span>
+
+                    <strong id="nightlyPrice">
+                        $0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Number of nights
+                    </span>
+
+                    <strong id="numberOfNights">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="total-row">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="totalPrice">
+                        $0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="confirm-booking-btn"
+            >
+                Confirm Booking
+            </button>
+
+        </form>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Hotels.com Clone.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="js/booking.js"></script>
+
+</body>
+
+</html>

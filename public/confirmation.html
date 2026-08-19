@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Booking Confirmed - Hotels.com Clone</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/confirmation.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================= -->
+    <!-- NAVBAR -->
+    <!-- ============================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Hotels<span>.com</span>
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="hotels.html">
+                Hotels
+            </a>
+
+            <a href="#">
+                Deals
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+        </nav>
+
+
+        <button class="login-btn">
+            Sign In
+        </button>
+
+    </header>
+
+
+
+    <!-- ============================= -->
+    <!-- CONFIRMATION -->
+    <!-- ============================= -->
+
+    <main class="confirmation-container">
+
+
+        <div
+            id="confirmationCard"
+            class="confirmation-card"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h1>
+                Booking Confirmed!
+            </h1>
+
+
+            <p class="success-message">
+                Your hotel reservation has been successfully created.
+            </p>
+
+
+            <!-- BOOKING INFORMATION -->
+
+            <div
+                id="bookingInformation"
+                class="booking-information"
+            >
+
+                Loading booking details...
+
+            </div>
+
+
+            <div class="confirmation-actions">
+
+                <button
+                    onclick="window.location.href='index.html'"
+                    class="home-btn"
+                >
+                    Back to Home
+                </button>
+
+
+                <button
+                    onclick="window.location.href='hotels.html'"
+                    class="hotels-btn"
+                >
+                    Browse More Hotels
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Hotels.com Clone.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="js/confirmation.js"></script>
+
+</body>
+
+</html>
