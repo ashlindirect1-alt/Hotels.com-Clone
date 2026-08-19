@@ -357,3 +357,42 @@
     }
 
 }
+
+/* =====================================
+   RESPONSIVE CONFIRMATION PAGE
+===================================== */
+
+@media (max-width: 768px) {
+
+    .confirmation-container {
+        padding: 25px 15px;
+    }
+
+    .confirmation-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .confirmation-container {
+        padding: 15px 10px;
+    }
+
+    .confirmation-card {
+        padding: 20px 15px;
+    }
+
+    .confirmation-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .confirmation-card button {
+        width: 100%;
+    }
+
+}

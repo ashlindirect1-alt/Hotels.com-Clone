@@ -314,3 +314,47 @@
     }
 
 }
+
+/* =====================================
+   RESPONSIVE BOOKING PAGE
+===================================== */
+
+@media (max-width: 768px) {
+
+    .booking-container {
+        grid-template-columns: 1fr;
+        padding: 20px 15px;
+    }
+
+    .hotel-summary {
+        width: 100%;
+    }
+
+    .booking-form {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .booking-container {
+        padding: 15px 10px;
+    }
+
+    .booking-card {
+        padding: 20px 15px;
+    }
+
+    .booking-form input,
+    .booking-form select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .booking-form button {
+        width: 100%;
+    }
+
+}
