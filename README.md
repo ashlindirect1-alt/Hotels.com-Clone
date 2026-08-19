@@ -1,26 +1,103 @@
 # 🏨 Hotels.com Clone
 
-A functional hotel booking web application inspired by Hotels.com.
+A fully functional hotel booking web application inspired by Hotels.com.
+
+Users can search for hotels by destination, filter and sort hotel results, view hotel details, and make hotel reservations. Booking information is stored in a SQLite database.
+
+---
 
 ## 🚀 Features
 
-- Hotel search by destination
-- Check-in and check-out date selection
-- Hotel listing page
-- Hotel images and descriptions
-- Hotel ratings
-- Hotel amenities
-- Price filtering
-- Rating filtering
-- Hotel type filtering
-- Sort hotels by price
-- Sort hotels by rating
-- Hotel details page
-- Hotel booking form
-- SQLite database
-- Booking confirmation
-- Responsive design
-- Mobile-friendly interface
+### 🏠 Homepage
+
+- Search hotels by destination
+- Select check-in date
+- Select check-out date
+- Featured hotels
+- Top-rated hotels
+- Responsive navigation
+- Sign-in page
+
+### 🔎 Hotel Search
+
+- Search hotels by destination
+- Dynamic hotel results
+- Search results connected to SQLite database
+
+### 🎯 Filters
+
+Users can filter hotels by:
+
+- Maximum price
+- Minimum rating
+- Hotel type
+
+Available hotel types:
+
+- Hotel
+- Luxury Hotel
+- Resort
+
+### 📊 Sorting
+
+Hotels can be sorted by:
+
+- Best Rated
+- Price: Low to High
+- Price: High to Low
+
+### 🏨 Hotel Details
+
+Each hotel has:
+
+- Hotel name
+- Location
+- Description
+- Image
+- Rating
+- Price per night
+- Hotel type
+- Amenities
+
+### 📅 Booking System
+
+Users can:
+
+- Select a hotel
+- Enter guest information
+- Select check-in date
+- Select check-out date
+- Select number of guests
+- Calculate number of nights
+- Calculate total price
+- Confirm a reservation
+
+### 💾 Database
+
+The application uses SQLite to store:
+
+- Hotel information
+- Booking information
+- Guest details
+- Check-in and check-out dates
+- Number of guests
+- Booking date
+
+### ✅ Booking Confirmation
+
+After a successful reservation, users receive a confirmation page containing:
+
+- Booking ID
+- Hotel name
+- Guest name
+- Email
+- Check-in date
+- Check-out date
+- Number of guests
+- Number of nights
+- Total price
+
+---
 
 ## 🛠️ Technologies Used
 
@@ -30,35 +107,45 @@ A functional hotel booking web application inspired by Hotels.com.
 - Node.js
 - Express.js
 - SQLite
-- REST API
-- LocalStorage
+- SQLite3
+- CORS
+- dotenv
+- Git
+- GitHub
+
+---
 
 ## 📁 Project Structure
 
 ```text
-Hotels.com-Clone/
+Hotels.com-Clone
 │
-├── public/
+├── public
+│   │
 │   ├── index.html
+│   ├── signin.html
 │   ├── hotels.html
 │   ├── hotel-details.html
 │   ├── booking.html
-│   └── confirmation.html
-│
-│   ├── css/
+│   ├── confirmation.html
+│   │
+│   ├── css
 │   │   ├── style.css
 │   │   ├── hotels.css
+│   │   ├── hotel-details.css
 │   │   ├── booking.css
 │   │   └── confirmation.css
 │   │
-│   └── js/
+│   └── js
 │       ├── script.js
+│       ├── signin.js
 │       ├── hotels.js
 │       ├── hotel-details.js
 │       ├── booking.js
 │       └── confirmation.js
 │
 ├── database.js
+├── hotels.db
 ├── server.js
 ├── package.json
 ├── package-lock.json
