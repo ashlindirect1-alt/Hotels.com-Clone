@@ -5,7 +5,7 @@ const db = require("./database");
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 // =====================================
@@ -22,7 +22,7 @@ app.use(express.urlencoded({
 
 
 // =====================================
-// SERVE FRONTEND FILES
+// SERVE FRONTEND
 // =====================================
 
 app.use(express.static(
@@ -77,7 +77,6 @@ app.get("/api/hotels", (req, res) => {
         ORDER BY rating DESC
     `;
 
-
     db.all(sql, [], (err, rows) => {
 
         if (err) {
@@ -91,12 +90,12 @@ app.get("/api/hotels", (req, res) => {
 
                 success: false,
 
-                message: "Failed to fetch hotels."
+                message:
+                    "Failed to fetch hotels."
 
             });
 
         }
-
 
         res.json({
 
@@ -119,9 +118,8 @@ app.get("/api/hotels", (req, res) => {
 
 app.get("/api/hotels/search", (req, res) => {
 
-    const {
-        destination
-    } = req.query;
+    const destination =
+        (req.query.destination || "").trim();
 
 
     if (!destination) {
@@ -185,7 +183,6 @@ app.get("/api/hotels/search", (req, res) => {
             });
 
         }
-
     );
 
 });
@@ -198,7 +195,21 @@ app.get("/api/hotels/search", (req, res) => {
 app.get("/api/hotels/:id", (req, res) => {
 
     const hotelId =
-        req.params.id;
+        Number(req.params.id);
+
+
+    if (!Number.isInteger(hotelId)) {
+
+        return res.status(400).json({
+
+            success: false,
+
+            message:
+                "Invalid hotel ID."
+
+        });
+
+    }
 
 
     const sql = `
@@ -255,10 +266,10 @@ app.get("/api/hotels/:id", (req, res) => {
             });
 
         }
-
     );
 
 });
+
 
 // =====================================
 // CREATE BOOKING
@@ -276,7 +287,9 @@ app.post("/api/bookings", (req, res) => {
     } = req.body;
 
 
-    // Validate required fields
+    // =================================
+    // BASIC VALIDATION
+    // =================================
 
     if (
         !hotel_id ||
@@ -299,12 +312,97 @@ app.post("/api/bookings", (req, res) => {
     }
 
 
-    // Validate dates
+    const hotelId =
+        Number(hotel_id);
+
+
+    const guestCount =
+        Number(guests);
+
+
+    if (!Number.isInteger(hotelId)) {
+
+        return res.status(400).json({
+
+            success: false,
+
+            message:
+                "Invalid hotel ID."
+
+        });
+
+    }
+
 
     if (
-        new Date(check_out) <=
-        new Date(check_in)
+        !Number.isInteger(guestCount) ||
+        guestCount < 1 ||
+        guestCount > 20
     ) {
+
+        return res.status(400).json({
+
+            success: false,
+
+            message:
+                "Guests must be between 1 and 20."
+
+        });
+
+    }
+
+
+    // =================================
+    // EMAIL VALIDATION
+    // =================================
+
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    if (!emailPattern.test(email)) {
+
+        return res.status(400).json({
+
+            success: false,
+
+            message:
+                "Please enter a valid email address."
+
+        });
+
+    }
+
+
+    // =================================
+    // DATE VALIDATION
+    // =================================
+
+    const checkInDate =
+        new Date(check_in);
+
+    const checkOutDate =
+        new Date(check_out);
+
+
+    if (
+        Number.isNaN(checkInDate.getTime()) ||
+        Number.isNaN(checkOutDate.getTime())
+    ) {
+
+        return res.status(400).json({
+
+            success: false,
+
+            message:
+                "Invalid booking dates."
+
+        });
+
+    }
+
+
+    if (checkOutDate <= checkInDate) {
 
         return res.status(400).json({
 
@@ -318,112 +416,264 @@ app.post("/api/bookings", (req, res) => {
     }
 
 
-    // Get current date
+    // =================================
+    // CHECK HOTEL EXISTS
+    // =================================
 
-    const bookingDate =
-        new Date().toISOString();
+    db.get(
+        "SELECT * FROM hotels WHERE id = ?",
+        [hotelId],
+        (hotelError, hotel) => {
 
-
-    // Insert booking
-
-    const sql = `
-
-        INSERT INTO bookings
-
-        (
-            hotel_id,
-            guest_name,
-            email,
-            check_in,
-            check_out,
-            guests,
-            booking_date
-        )
-
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-
-    `;
-
-
-    db.run(
-        sql,
-
-        [
-            hotel_id,
-            guest_name,
-            email,
-            check_in,
-            check_out,
-            guests,
-            bookingDate
-        ],
-
-        function(err) {
-
-            if (err) {
+            if (hotelError) {
 
                 console.error(
-                    "Booking error:",
-                    err.message
+                    "Hotel lookup error:",
+                    hotelError.message
                 );
-
 
                 return res.status(500).json({
 
                     success: false,
 
                     message:
-                        "Failed to save booking."
+                        "Unable to verify hotel."
 
                 });
 
             }
 
 
-            // Return booking
+            if (!hotel) {
 
-            res.status(201).json({
+                return res.status(404).json({
 
-                success: true,
+                    success: false,
 
-                message:
-                    "Booking created successfully.",
+                    message:
+                        "Hotel not found."
 
-                booking: {
+                });
 
-                    id:
-                        this.lastID,
+            }
 
-                    hotel_id:
-                        hotel_id,
 
-                    guest_name:
-                        guest_name,
+            // =================================
+            // BOOKING DATE
+            // =================================
 
-                    email:
-                        email,
+            const bookingDate =
+                new Date().toISOString();
 
-                    check_in:
-                        check_in,
 
-                    check_out:
-                        check_out,
+            // =================================
+            // INSERT BOOKING
+            // =================================
 
-                    guests:
-                        guests,
+            const sql = `
 
-                    booking_date:
-                        bookingDate
+                INSERT INTO bookings
+
+                (
+                    hotel_id,
+                    guest_name,
+                    email,
+                    check_in,
+                    check_out,
+                    guests,
+                    booking_date
+                )
+
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+
+            `;
+
+
+            db.run(
+
+                sql,
+
+                [
+                    hotelId,
+                    guest_name.trim(),
+                    email.trim(),
+                    check_in,
+                    check_out,
+                    guestCount,
+                    bookingDate
+                ],
+
+                function(err) {
+
+                    if (err) {
+
+                        console.error(
+                            "Booking error:",
+                            err.message
+                        );
+
+                        return res.status(500).json({
+
+                            success: false,
+
+                            message:
+                                "Failed to save booking."
+
+                        });
+
+                    }
+
+
+                    res.status(201).json({
+
+                        success: true,
+
+                        message:
+                            "Booking created successfully.",
+
+                        booking: {
+
+                            id:
+                                this.lastID,
+
+                            hotel_id:
+                                hotelId,
+
+                            guest_name:
+                                guest_name.trim(),
+
+                            email:
+                                email.trim(),
+
+                            check_in:
+                                check_in,
+
+                            check_out:
+                                check_out,
+
+                            guests:
+                                guestCount,
+
+                            booking_date:
+                                bookingDate
+
+                        }
+
+                    });
 
                 }
 
-            });
+            );
 
         }
 
     );
 
 });
+
+
+// =====================================
+// GET BOOKING BY ID
+// =====================================
+
+app.get("/api/bookings/:id", (req, res) => {
+
+    const bookingId =
+        Number(req.params.id);
+
+
+    if (!Number.isInteger(bookingId)) {
+
+        return res.status(400).json({
+
+            success: false,
+
+            message:
+                "Invalid booking ID."
+
+        });
+
+    }
+
+
+    const sql = `
+
+        SELECT
+
+            bookings.*,
+
+            hotels.name AS hotel_name,
+
+            hotels.location AS hotel_location,
+
+            hotels.image AS hotel_image,
+
+            hotels.rating AS hotel_rating,
+
+            hotels.price AS hotel_price
+
+        FROM bookings
+
+        JOIN hotels
+
+            ON bookings.hotel_id = hotels.id
+
+        WHERE bookings.id = ?
+
+    `;
+
+
+    db.get(
+        sql,
+        [bookingId],
+        (err, booking) => {
+
+            if (err) {
+
+                console.error(
+                    "Booking lookup error:",
+                    err.message
+                );
+
+                return res.status(500).json({
+
+                    success: false,
+
+                    message:
+                        "Failed to fetch booking."
+
+                });
+
+            }
+
+
+            if (!booking) {
+
+                return res.status(404).json({
+
+                    success: false,
+
+                    message:
+                        "Booking not found."
+
+                });
+
+            }
+
+
+            res.json({
+
+                success: true,
+
+                booking: booking
+
+            });
+
+        }
+    );
+
+});
+
 
 // =====================================
 // START SERVER

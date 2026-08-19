@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sign In - Hotels.com Clone</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Hotels<span>.com</span>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="hotels.html">
+                Hotels
+            </a>
+
+            <a href="#">
+                Deals
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- SIGN IN -->
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <h1>
+                Welcome Back
+            </h1>
+
+            <p>
+                Sign in to your Hotels.com Clone account
+            </p>
+
+
+            <form id="signinForm">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Sign In
+                </button>
+
+            </form>
+
+
+            <p
+                id="signinMessage"
+                class="auth-message"
+            ></p>
+
+
+            <p class="auth-footer">
+
+                Don't have an account?
+
+                <a href="#">
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/signin.js"></script>
+
+</body>
+
+</html>

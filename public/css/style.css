@@ -373,3 +373,71 @@ footer {
         width: 92%;
     }
 }
+
+/* =====================================
+   SIGN IN PAGE
+===================================== */
+
+.auth-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+}
+
+.auth-card h1 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.auth-card > p {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-card label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.auth-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.auth-message {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.auth-footer {
+    margin-top: 20px;
+    font-size: 14px;
+}

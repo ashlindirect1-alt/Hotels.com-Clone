@@ -430,30 +430,36 @@ bookingForm.addEventListener(
             }
 
 
-            // Save confirmation information
+            // =====================================
+           // SAVE BASIC CONFIRMATION INFORMATION
+          // =====================================
 
-            localStorage.setItem(
-                "bookingConfirmation",
-                JSON.stringify({
-                    booking:
-                        data.booking,
+             localStorage.setItem(
+            "bookingConfirmation",
+            JSON.stringify({
 
-                    hotel:
-                        currentHotel,
+               bookingId:
+                 data.booking.id,
 
-                    total:
-                        total,
+               hotel:
+                 currentHotel,
 
-                    nights:
-                        nights
-                })
-            );
+               total:
+                 total,
+
+               nights:
+                 nights
+
+    })
+);
 
 
-            // Go to confirmation page
+// =====================================
+// GO TO CONFIRMATION PAGE
+// =====================================
 
-            window.location.href =
-                "confirmation.html";
+window.location.href =
+    `confirmation.html?booking=${data.booking.id}`;
 
         }
 
